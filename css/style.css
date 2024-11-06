@@ -26,12 +26,14 @@ ul,ol{
     flex-wrap: wrap;
 }
 .col-4{
-    width: calc(95% / 3);
+    width: calc(100% / 3);
+    padding: 15px;
 }
       
 /* header style */
 .navbar{
     background-image: url(/img/wall.png);
+    margin-bottom: 50px;
 }
 .title{
     font-size: 70px;
@@ -40,7 +42,31 @@ ul,ol{
     padding: 20px;
 
 }
+/* main style */
+body {
+    background-image: url(/img/cork.png);
+}
+.card{
+    position: relative;
+    background-color: white;
+    padding: 10px;
+}
 .card-img{
     width: 600px;
     height: 600px;
+}
+.card-point{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+@media (max-width: 992px){
+    
+}
+
+@media (max-width: 576px){
+    
 }
