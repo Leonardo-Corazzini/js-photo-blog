@@ -25,13 +25,13 @@ axios
 function cardGenerator(array, root) {
     array.forEach(card => {
         const { title, thumbnailUrl } = card
-        const createdCard = myCreateElement4('div', ['col-4'],
-            myCreateElement4('div', ['card'], [
-                myCreateElement4('img', ['card-img'], [], (el) => (el.src = thumbnailUrl)),
-                myCreateElement4('p', ['card-text'], [title]),
-                myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
+        const createdCard = myCreateElement4('div', ['col-4'], [
+                myCreateElement4('div', ['card'], [
+                    myCreateElement4('img', ['card-img'], [], (el) => (el.src = thumbnailUrl)),
+                    myCreateElement4('p', ['card-text'], [], (el) => {el.innerHTML = title}),
+                    myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
+                ])
             ])
-        )
         root.appendChild(createdCard)
     });
 }
@@ -59,14 +59,23 @@ function myCreateElement4(
     }
 
     // Contenuto
+    // if (Array.isArray(content)) {
+    //     for (let i = 0; i < content.length; i++) {
+    //         el.appendChild(content[i]);
+    //     }
+    // } else if (content instanceof HTMLElement) {
+    //     el.appendChild(content);
+    // } else if (typeof content === "string") {
+    //     el.innerHTML = content;
+    // } else {
+    //     console.error("Non posso aggiungere l'elemento");
+    // }
     if (Array.isArray(content)) {
         for (let i = 0; i < content.length; i++) {
-            el.appendChild(content[i]);
+            if (content[i] instanceof HTMLElement) {
+                el.appendChild(content[i]);
+            }
         }
-    } else if (content instanceof HTMLElement) {
-        el.appendChild(content);
-    } else if (typeof content === "string") {
-        el.innerHTML = content;
     } else {
         console.error("Non posso aggiungere l'elemento");
     }
