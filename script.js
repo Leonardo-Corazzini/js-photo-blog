@@ -25,7 +25,7 @@ axios
 function cardGenerator(array, root) {
     array.forEach(card => {
         const { title, thumbnailUrl , url } = card
-        const createdCard = myCreateElement4('div', ['col-4'], [
+        const createdCard = myCreateElement4('div', ['col'], [
                 myCreateElement4('div', ['card'], [
                     myCreateElement4('img', ['card-img'], [], (el) => (el.src = thumbnailUrl)),
                     myCreateElement4('p', ['card-text'], [], (el) => {el.innerHTML = title}),
