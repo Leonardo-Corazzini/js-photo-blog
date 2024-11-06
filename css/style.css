@@ -52,8 +52,7 @@ body {
     padding: 10px;
 }
 .card-img{
-    width: 600px;
-    height: 600px;
+   width: 600px; 
 }
 .card-point{
     position: absolute;
@@ -64,9 +63,15 @@ body {
 
 
 @media (max-width: 992px){
-    
+    .col-4{
+        width: calc(100% / 2);
+        padding: 15px;
+    }
 }
 
 @media (max-width: 576px){
-    
+    .col-4{
+        width: 100%;
+        padding: 15px;
+    }
 }
