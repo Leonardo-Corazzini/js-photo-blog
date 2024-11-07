@@ -1,6 +1,7 @@
 const cardContainer = document.querySelector('.card-container')
 const pattern = document.querySelector('.pattern')
 const closedBtn = document.querySelector('.closed-btn')
+const bigImg = document.querySelector('.big-img')
 axios
     .get('https://jsonplaceholder.typicode.com/photos', {
         params: {
@@ -33,18 +34,21 @@ function cardGenerator(array, root) {
         const { title, thumbnailUrl , url } = card
         const createdCard = myCreateElement4('div', ['col'], [
                 myCreateElement4('div', ['card'], [
-                    myCreateElement4('img', ['card-img'], [], (el) => (el.src = thumbnailUrl)),
+                    myCreateElement4('img', ['card-img'], [], (el) => (el.src = url)),
                     myCreateElement4('p', ['card-text'], [], (el) => {el.innerHTML = title}),
                     myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
                 ])
             ])
         root.appendChild(createdCard)
-        createdCard.addEventListener('click',function(){
-            
-        })
+        cardEvent(createdCard,card)
     });
 }
-
+function cardEvent(createdCard,card){
+    createdCard.addEventListener('click',function(){
+        pattern.classList.remove('display') 
+        bigImg.src = card.url
+    })
+}
 
 
 // utilities
