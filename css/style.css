@@ -64,7 +64,12 @@ body {
     left: 50%;
     transform: translateX(-50%);
 }
-
+/* effetti in :hover */
+.card:hover{
+    transform: scale(1.2) rotate(10deg);
+    cursor: pointer;
+   
+}
 /* pattern */
 
 .pattern{

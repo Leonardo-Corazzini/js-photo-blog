@@ -21,6 +21,9 @@ axios
 closedBtn.addEventListener('click',function(){
     pattern.classList.add('display')
 })
+pattern.addEventListener('click',function(){
+    pattern.classList.add('display')
+})
 
 //              <div class="col-4">
 //                 <div class="card">
