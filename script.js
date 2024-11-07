@@ -26,6 +26,7 @@ axios
 pattern.addEventListener('click',function(){
     pattern.classList.add('display')
     bigImg.classList.add('display')
+    body.classList.remove('overflow-hidden')
 })
 
 //              <div class="col-4">
