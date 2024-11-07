@@ -18,15 +18,17 @@ axios
     .catch((err) => {
         console.log(err)
     })
+closedBtn.addEventListener('click', function () {
+    pattern.classList.remove('display');
+    body.classList.remove('overflow-hidden');
+})
+pattern.addEventListener('click', function (event) {
 
-// closedBtn.addEventListener('click',function(){
-//     pattern.classList.add('display')
-//     bigImg.classList.add('display')
-// })
-pattern.addEventListener('click',function(){
-    pattern.classList.add('display')
-    bigImg.classList.add('display')
-    body.classList.remove('overflow-hidden')
+    if (event.target === pattern) {
+        pattern.classList.remove('display');
+        body.classList.remove('overflow-hidden');
+    }
+
 })
 
 //              <div class="col-4">
@@ -38,23 +40,22 @@ pattern.addEventListener('click',function(){
 //             </div>
 function cardGenerator(array, root) {
     array.forEach(card => {
-        const { title, thumbnailUrl , url } = card
+        const { title, thumbnailUrl, url } = card
         const createdCard = myCreateElement4('div', ['col'], [
-                myCreateElement4('div', ['card'], [
-                    myCreateElement4('img', ['card-img'], [], (el) => (el.src = url)),
-                    myCreateElement4('p', ['card-text'], [], (el) => {el.innerHTML = title}),
-                    myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
-                ])
+            myCreateElement4('div', ['card'], [
+                myCreateElement4('img', ['card-img'], [], (el) => (el.src = url)),
+                myCreateElement4('p', ['card-text'], [], (el) => { el.innerHTML = title }),
+                myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
             ])
+        ])
         root.appendChild(createdCard)
-        cardEvent(createdCard,card)
+        cardEvent(createdCard, card)
     });
 }
-function cardEvent(createdCard,card){
-    createdCard.addEventListener('click',function(){
-        pattern.classList.remove('display') 
+function cardEvent(createdCard, card) {
+    createdCard.addEventListener('click', function () {
+        pattern.classList.add('display')
         bigImg.src = card.url
-        bigImg.classList.remove('display')
         body.classList.add('overflow-hidden')
     })
 }
