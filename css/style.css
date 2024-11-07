@@ -53,7 +53,7 @@ body {
 .card{
     position: relative;
     background-color: white;
-    padding: 10px;
+    padding: 15px;
 }
 .card-img{
    width: 600px; 
@@ -65,7 +65,25 @@ body {
     transform: translateX(-50%);
 }
 
+/* pattern */
 
+.pattern{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.display{
+    display: none;
+}
+.closed-btn{
+    margin: 150px;
+    font-size: 20px;
+}
 @media (max-width: 992px){
     .col{
         width: calc(100% / 2);

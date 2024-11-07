@@ -1,4 +1,6 @@
 const cardContainer = document.querySelector('.card-container')
+const pattern = document.querySelector('.pattern')
+const closedBtn = document.querySelector('.closed-btn')
 axios
     .get('https://jsonplaceholder.typicode.com/photos', {
         params: {
@@ -14,6 +16,10 @@ axios
     .catch((err) => {
         console.log(err)
     })
+
+closedBtn.addEventListener('click',function(){
+    pattern.classList.add('display')
+})
 
 //              <div class="col-4">
 //                 <div class="card">
@@ -33,6 +39,9 @@ function cardGenerator(array, root) {
                 ])
             ])
         root.appendChild(createdCard)
+        createdCard.addEventListener('click',function(){
+            
+        })
     });
 }
 
