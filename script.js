@@ -2,6 +2,7 @@ const cardContainer = document.querySelector('.card-container')
 const pattern = document.querySelector('.pattern')
 const closedBtn = document.querySelector('.closed-btn')
 const bigImg = document.querySelector('.big-img')
+const body = document.querySelector('body')
 axios
     .get('https://jsonplaceholder.typicode.com/photos', {
         params: {
@@ -18,11 +19,13 @@ axios
         console.log(err)
     })
 
-closedBtn.addEventListener('click',function(){
-    pattern.classList.add('display')
-})
+// closedBtn.addEventListener('click',function(){
+//     pattern.classList.add('display')
+//     bigImg.classList.add('display')
+// })
 pattern.addEventListener('click',function(){
     pattern.classList.add('display')
+    bigImg.classList.add('display')
 })
 
 //              <div class="col-4">
@@ -50,6 +53,8 @@ function cardEvent(createdCard,card){
     createdCard.addEventListener('click',function(){
         pattern.classList.remove('display') 
         bigImg.src = card.url
+        bigImg.classList.remove('display')
+        body.classList.add('overflow-hidden')
     })
 }
 
