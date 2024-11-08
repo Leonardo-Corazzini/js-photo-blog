@@ -40,7 +40,7 @@ pattern.addEventListener('click', function (event) {
 //             </div>
 function cardGenerator(array, root) {
     array.forEach(card => {
-        const { title, thumbnailUrl, url } = card
+        const { title, url } = card
         const createdCard = myCreateElement4('div', ['col'], [
             myCreateElement4('div', ['card'], [
                 myCreateElement4('img', ['card-img'], [], (el) => (el.src = url)),
