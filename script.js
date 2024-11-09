@@ -1,8 +1,10 @@
+// prendo gli elementi del dom
 const cardContainer = document.querySelector('.card-container')
-const pattern = document.querySelector('.pattern')
-const closedBtn = document.querySelector('.closed-btn')
+const fragment = document.createDocumentFragment()
+const overlay = document.querySelector('.overlay')
 const bigImg = document.querySelector('.big-img')
-const body = document.querySelector('body')
+
+// faccio una chiamata ajax
 axios
     .get('https://jsonplaceholder.typicode.com/photos', {
         params: {
@@ -13,20 +15,18 @@ axios
         console.log(res)
         const cards = res.data
         console.log(cards)
-        cardGenerator(cards, cardContainer)
+        cardGenerator(cards, fragment)
+        cardContainer.append(fragment)
     })
     .catch((err) => {
         console.log(err)
     })
-closedBtn.addEventListener('click', function () {
-    pattern.classList.remove('display');
-    body.classList.remove('overflow-hidden');
-})
-pattern.addEventListener('click', function (event) {
 
-    if (event.target === pattern) {
-        pattern.classList.remove('display');
-        body.classList.remove('overflow-hidden');
+
+overlay.addEventListener('click', function (event) {
+
+    if (event.target !== bigImg) {
+        closeOverlay();
     }
 
 })
@@ -44,7 +44,7 @@ function cardGenerator(array, root) {
         const createdCard = myCreateElement4('div', ['col'], [
             myCreateElement4('div', ['card'], [
                 myCreateElement4('img', ['card-img'], [], (el) => (el.src = url)),
-                myCreateElement4('p', ['card-text'], [], (el) => { el.innerHTML = title }),
+                myCreateElement4('p', ['card-text'], [], (el) => { el.innerText = title }),
                 myCreateElement4('img', ['card-point'], [], (el) => (el.src = "./img/pin.svg"))
             ])
         ])
@@ -54,12 +54,15 @@ function cardGenerator(array, root) {
 }
 function cardEvent(createdCard, card) {
     createdCard.addEventListener('click', function () {
-        pattern.classList.add('display')
+        overlay.classList.add('display')
         bigImg.src = card.url
-        body.classList.add('overflow-hidden')
+        document.body.classList.add('overflow-hidden');
     })
 }
-
+function closeOverlay (){
+    overlay.classList.remove('display');
+    document.body.classList.remove('overflow-hidden');
+}
 
 // utilities
 function myCreateElement4(
