@@ -31,7 +31,11 @@ overlay.addEventListener('click', function (event) {
 
 })
 
-//              <div class="col-4">
+
+// funzioni 
+
+
+//              <div class="col">
 //                 <div class="card">
 //                     <img class="card-img" src="./img/1.webp" alt="">
 //                     <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, beatae.</p>
@@ -54,13 +58,13 @@ function cardGenerator(array, root) {
 }
 function cardEvent(createdCard, card) {
     createdCard.addEventListener('click', function () {
-        overlay.classList.add('display')
+        overlay.classList.add('display-on')
         bigImg.src = card.url
         document.body.classList.add('overflow-hidden');
     })
 }
 function closeOverlay (){
-    overlay.classList.remove('display');
+    overlay.classList.remove('display-on');
     document.body.classList.remove('overflow-hidden');
 }
 

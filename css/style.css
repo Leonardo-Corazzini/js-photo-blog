@@ -130,7 +130,7 @@ body {
     user-select: none;
 }
 
-.overlay.display {
+.overlay.display-on {
     visibility: visible;
     opacity: 1;
 }
